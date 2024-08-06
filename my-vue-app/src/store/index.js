@@ -34,6 +34,12 @@ const store = createStore({
       commit('setProducts', products);
     }
   },
+  getters: {
+    products: (state) => state.products,
+    cart: (state) => state.cart,
+    wishlist: (state) => state.wishlist,
+    isLoggedIn: (state) => state.isLoggedIn
+  }
 });
 
 export default store; 
