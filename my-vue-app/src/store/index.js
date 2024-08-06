@@ -11,6 +11,9 @@ const store = createStore({
     setProducts(state, products) {
       state.products = products;
     },
+    addToCart(state, product) {
+      state.cart.push(product);
+    },
   },
 });
 
