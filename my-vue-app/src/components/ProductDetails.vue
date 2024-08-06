@@ -11,5 +11,5 @@
         <button @click="removeFromCart(product)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Remove from Cart</button>
         <button @click="removeFromWishlist(product)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Remove from Wishlist</button>
       </div>
-    </div>
+    </div> 
   </template>
