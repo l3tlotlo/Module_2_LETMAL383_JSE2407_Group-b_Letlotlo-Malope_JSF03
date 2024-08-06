@@ -20,6 +20,9 @@ const store = createStore({
     addToWishlist(state, product) {
       state.wishlist.push(product);
     },
+    removeFromWishlist(state, productId) {
+      state.wishlist = state.wishlist.filter(product => product.id !== productId);
+    },
   },
 });
 
