@@ -28,5 +28,28 @@
       </div>     
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      sortOrder: 'default',
+      searchQuery: '',
+      filteredWishlist: []
+    };
+  },
+  computed: {
+    wishlist() {
+      return this.$store.getters.wishlist;
+    }
+  },
+  watch: {
+    wishlist: 'updateFilteredWishlist',
+    sortOrder: 'sortItems',
+    searchQuery: 'filterItems'
+  },
+ 
+};
+</script>
   
  
