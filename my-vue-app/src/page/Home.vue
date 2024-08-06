@@ -59,7 +59,18 @@
         <button @click="selectedProduct = null" class="mb-4 text-blue-500 hover:underline">&larr; Back to products</button>
         <img :src="selectedProduct.image" :alt="selectedProduct.title" class="h-64 w-full object-contain mb-4" />
         <h2 class="text-2xl font-semibold mb-2">{{ selectedProduct.title }}</h2>
-        
+        <div class="flex items-center mb-2">
+          <svg v-for="star in 5" :key="star" :class="star <= selectedProduct.rating.rate ? 'text-yellow-500' : 'text-gray-300'" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049.999a1 1 0 011.902 0l2.462 5.004 5.511.8a1 1 0 01.554 1.706l-3.989 3.886.942 5.484a1 1 0 01-1.451 1.054L10 15.347l-4.926 2.59a1 1 0 01-1.451-1.054l.942-5.484-3.989-3.886a1 1 0 01.554-1.706l5.511-.8 2.462-5.004z"></path>
+          </svg>
+          <span class="text-gray-600 ml-2">{{ `(${selectedProduct.rating.count} reviews)` }}</span>
+        </div>
+        <p class="text-gray-500 mb-2">{{ selectedProduct.description }}</p>
+        <p class="text-blue-500 font-bold mb-2">${{ selectedProduct.price.toFixed(2) }}</p>
+        <div class="flex gap-4">
+          <button @click="addToCart(selectedProduct)" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Add to Cart</button>
+          <button @click="addToWishlist(selectedProduct)" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">Add to Wishlist</button>
+        </div>
       </div>
     </template>
   </div>
