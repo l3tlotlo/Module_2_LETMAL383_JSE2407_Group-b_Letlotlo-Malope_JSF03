@@ -23,6 +23,9 @@ const store = createStore({
     removeFromWishlist(state, productId) {
       state.wishlist = state.wishlist.filter(product => product.id !== productId);
     },
+    setIsLoggedIn(state, status) {
+      state.isLoggedIn = status; 
+    }
   },
 });
 
