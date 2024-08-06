@@ -29,5 +29,16 @@
       </div> 
     </div>
   </template>
+
+<script>
+export default {
+  data() {
+    return {
+      sortOrder: 'default',
+      searchQuery: '',
+      filteredCart: []
+    };
+
+</script>
   
- 
+  
