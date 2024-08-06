@@ -7,7 +7,11 @@ const store = createStore({
     wishlist: [],
     isLoggedIn: false
   },
- 
+  mutations: {
+    setProducts(state, products) {
+      state.products = products;
+    },
+  },
 });
 
 export default store; 
