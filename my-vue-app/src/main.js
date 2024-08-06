@@ -11,4 +11,4 @@ window.process = process;
 createApp(App)
   .use(router)
   .use(store) 
-  .mount('#app');
+  .mount('#app'); 
