@@ -26,19 +26,52 @@
           <p class="text-blue-500 font-bold mb-2">${{ product.price.toFixed(2) }}</p>
           <button @click="removeFromCart(product.id)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Remove from Cart</button>
         </div>
-      </div> 
+      </div>
     </div>
   </template>
-
-<script>
-export default {
-  data() {
-    return {
-      sortOrder: 'default',
-      searchQuery: '',
-      filteredCart: []
-    };
-
-</script>
   
-  
+  <script>
+  export default {
+    data() {
+      return {
+        sortOrder: 'default',
+        searchQuery: '',
+        filteredCart: []
+      };
+    },
+    computed: {
+      cart() {
+        return this.$store.getters.cart;
+      }
+    },
+    watch: {
+      cart: 'updateFilteredCart',
+      sortOrder: 'sortItems',
+      searchQuery: 'filterItems'
+    },
+    methods: {
+      updateFilteredCart() {
+        this.filteredCart = [...this.cart];
+        this.sortItems();
+        this.filterItems();
+      },
+      sortItems() {
+        if (this.sortOrder === 'price-asc') {
+          this.filteredCart.sort((a, b) => a.price - b.price);
+        } else if (this.sortOrder === 'price-desc') {
+          this.filteredCart.sort((a, b) => b.price - a.price);
+        }
+      },
+      filterItems() {
+        this.filteredCart = this.cart.filter(product => product.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        this.sortItems();
+      },
+      removeFromCart(productId) {
+        this.$store.commit('removeFromCart', productId);
+      }
+    },
+    created() {
+      this.updateFilteredCart();
+    }
+  };
+  </script>
