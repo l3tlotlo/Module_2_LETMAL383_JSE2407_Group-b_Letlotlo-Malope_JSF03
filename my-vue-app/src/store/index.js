@@ -14,6 +14,9 @@ const store = createStore({
     addToCart(state, product) {
       state.cart.push(product);
     },
+    removeFromCart(state, productId) {
+      state.cart = state.cart.filter(product => product.id !== productId);
+    },
   },
 });
 
