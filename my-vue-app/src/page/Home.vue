@@ -10,6 +10,9 @@
           </option>
         </select>
       </div>
+      <div class="flex-1 mx-4">
+        <input type="text" placeholder="Search products..." class="w-full p-2 border rounded bg-white text-gray-800" v-model="searchQuery" @input="filterProducts" />
+      </div>
       
       
     </div>
