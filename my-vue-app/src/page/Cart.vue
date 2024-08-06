@@ -75,3 +75,10 @@
     }
   };
   </script>
+
+<style scoped>
+.product-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+</style>
