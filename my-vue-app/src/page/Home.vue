@@ -13,7 +13,11 @@
       <div class="flex-1 mx-4">
         <input type="text" placeholder="Search products..." class="w-full p-2 border rounded bg-white text-gray-800" v-model="searchQuery" @input="filterProducts" />
       </div>
-      
+      <select class="p-2 border rounded bg-white text-gray-800" v-model="sortOrder" @change="sortProducts">
+        <option value="default">Sort by: Default</option>
+        <option value="price-asc">Sort by: Price - Low to High</option>
+        <option value="price-desc">Sort by: Price - High to Low</option>
+      </select>
       
     </div>
 
