@@ -19,6 +19,28 @@
       </div>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    login() {
+      // Dummy login logic
+      if (this.username === 'user' && this.password === 'pass') {
+        this.$emit('login');
+      } else {
+        alert('Invalid credentials');
+      }
+    } 
+  }
+};
+</script>
+
   
   
   
