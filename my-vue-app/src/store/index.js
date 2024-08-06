@@ -17,6 +17,9 @@ const store = createStore({
     removeFromCart(state, productId) {
       state.cart = state.cart.filter(product => product.id !== productId);
     },
+    addToWishlist(state, product) {
+      state.wishlist.push(product);
+    },
   },
 });
 
