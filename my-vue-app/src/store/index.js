@@ -27,6 +27,13 @@ const store = createStore({
       state.isLoggedIn = status; 
     }
   },
+  actions: {
+    async fetchProducts({ commit }) {
+      const response = await fetch('https://fakestoreapi.com/products');
+      const products = await response.json();
+      commit('setProducts', products);
+    }
+  },
 });
 
 export default store; 
