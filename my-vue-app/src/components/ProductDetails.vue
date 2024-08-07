@@ -11,38 +11,38 @@
         <button @click="removeFromCart(product)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Remove from Cart</button>
         <button @click="removeFromWishlist(product)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Remove from Wishlist</button>
       </div>
-    </div> 
+    </div>
   </template>
-
-<script>
-export default {
-  computed: {
-    product() {
-      const product = this.$store.getters.cartItems.find(product => product.id === Number(this.$route.params.id)) || 
-                      this.$store.getters.wishlistItems.find(product => product.id === Number(this.$route.params.id));
-      return product;
-    }
-  },
-  methods: {
-    addToCart(product) {
-      this.$store.commit('cart/addToCart', product);
+  
+  <script>
+  export default {
+    computed: {
+      product() {
+        const product = this.$store.getters.cartItems.find(product => product.id === Number(this.$route.params.id)) || 
+                        this.$store.getters.wishlistItems.find(product => product.id === Number(this.$route.params.id));
+        return product;
+      }
     },
-    addToWishlist(product) {
-      this.$store.commit('wishlist/addToWishlist', product);
+    methods: {
+      addToCart(product) {
+        this.$store.commit('cart/addToCart', product);
+      },
+      addToWishlist(product) {
+        this.$store.commit('wishlist/addToWishlist', product);
+      },
+      removeFromCart(productId) {
+        this.$store.commit('cart/removeFromCart', productId);
+      },
+      removeFromWishlist(productId) {
+        this.$store.commit('wishlist/removeFromWishlist', productId);
+      }
     },
-    removeFromCart(productId) {
-      this.$store.commit('cart/removeFromCart', productId);
-    },
-    removeFromWishlist(productId) {
-      this.$store.commit('wishlist/removeFromWishlist', productId);
+    created() {
+      if (!this.product) {
+        this.$store.dispatch('fetchProducts').then(() => {
+          this.$forceUpdate(); // Force component update after fetch
+        });
+      }
     }
-  },
-  created() {
-    if (!this.product) {
-      this.$store.dispatch('fetchProducts').then(() => {
-        this.$forceUpdate(); // Force component update after fetch
-      });
-    }
-  }
-};
-</script>
+  };
+  </script>
