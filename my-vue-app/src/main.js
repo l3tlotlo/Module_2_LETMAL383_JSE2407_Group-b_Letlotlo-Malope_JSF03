@@ -3,8 +3,6 @@ import App from './App.vue';
 import router from './router/index';
 import './assets/tailwind.css';
 import store from './store/index'; 
-import Cart from '../src/page/Cart.vue';
-import Wishlist from '../src/page/Wishlist.vue';
 import process from 'process';
 
 // Expose Node.js process to the global window object
