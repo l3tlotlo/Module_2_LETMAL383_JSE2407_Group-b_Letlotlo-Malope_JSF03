@@ -23,7 +23,7 @@
           <li><router-link to="/cart" class="text-white md:hidden">Cart</router-link></li>
           <li><button @click="$emit('toggle-login')" class="text-white">Login</button></li>
         </ul>
-      </div>      
+      </div>
     </nav>
   </header>
 </template>
@@ -32,6 +32,10 @@
 export default {
   data() {
     return {
+      /**
+       * A boolean to check if whether the menu is open or closed.
+       * @type {boolean}
+       */
       isOpen: false
     };
   }
@@ -39,5 +43,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
