@@ -34,12 +34,30 @@
   export default {
     data() {
       return {
+        /**
+         * The current sort order for the wishlist items.
+         * @type {string}
+         */
         sortOrder: 'default',
+  
+        /**
+         * The current search query for filtering wishlist items.
+         * @type {string}
+         */
         searchQuery: '',
+  
+        /**
+         * The filtered list of wishlist items based on sorting and search query.
+         * @type {Array}
+         */
         filteredWishlist: []
       };
     },
     computed: {
+      /**
+       * Computed property to get the wishlist from the Vuex store.
+       * @returns {Array} The list of products in the wishlist.
+       */
       wishlist() {
         return this.$store.getters.wishlist;
       }
@@ -50,11 +68,17 @@
       searchQuery: 'filterItems'
     },
     methods: {
+      /**
+       * Updates the filtered wishlist based on the current state of the wishlist.
+       */
       updateFilteredWishlist() {
         this.filteredWishlist = [...this.wishlist];
         this.sortItems();
         this.filterItems();
       },
+      /**
+       * Sorts the filtered wishlist based on the selected sort order.
+       */
       sortItems() {
         if (this.sortOrder === 'price-asc') {
           this.filteredWishlist.sort((a, b) => a.price - b.price);
@@ -62,10 +86,17 @@
           this.filteredWishlist.sort((a, b) => b.price - a.price);
         }
       },
+      /**
+       * Filters the wishlist items based on the search query.
+       */
       filterItems() {
         this.filteredWishlist = this.wishlist.filter(product => product.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
         this.sortItems();
       },
+      /**
+       * Removes an item from the wishlist by committing a mutation to the Vuex store.
+       * @param {number} productId - The ID of the product to remove from the wishlist.
+       */
       removeFromWishlist(productId) {
         this.$store.commit('removeFromWishlist', productId);
       }
@@ -82,3 +113,4 @@
     overflow: hidden;
   }
   </style>
+  
