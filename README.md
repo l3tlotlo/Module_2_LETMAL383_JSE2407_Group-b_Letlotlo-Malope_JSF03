@@ -42,3 +42,14 @@ Reset Filters and Sorting: Easily reset to default view without refreshing the p
 Loading States
 Initial Load: A loading indicator is shown while initial data is being fetched.
 Data Fetching: A loading indicator is shown when new data is being fetched.
+
+SCREENSHOTS
+
+Modal
+
+![image](https://github.com/user-attachments/assets/b0d20125-fb41-4062-a066-bd3f95aa5715)
+
+Main view
+
+![image](https://github.com/user-attachments/assets/f3af1d8a-b639-4ff1-97db-e45976c4fed7)
+
