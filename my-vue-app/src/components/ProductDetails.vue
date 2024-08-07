@@ -5,6 +5,7 @@
         <h1>{{ product.title }}</h1>
         <img :src="product.image" :alt="product.title" class="w-full h-auto" />
         <p>{{ product.description }}</p>
+        <p class="text-gray-500 mb-2">{{ product.category }}</p>
         <p>{{ product.price }}</p>
         <button @click="addToCart(product)" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Add to Cart</button>
         <button @click="addToWishlist(product)" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">Add to Wishlist</button>
