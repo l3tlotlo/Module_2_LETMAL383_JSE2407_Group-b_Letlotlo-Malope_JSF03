@@ -80,16 +80,47 @@
   export default {
     data() {
       return {
+        /**
+         * List of products fetched from the API.
+         * @type {Array<Object>}
+         */
         products: [],
+        /**
+         * List of product categories fetched from the API.
+         * @type {Array<String>}
+         */
         categories: [],
+        /**
+         * Currently selected product category.
+         * @type {String}
+         */
         selectedCategory: 'all',
+        /**
+         * Search query for filtering products.
+         * @type {String}
+         */
         searchQuery: '',
+        /**
+         * Current sorting order for products.
+         * @type {String}
+         */
         sortOrder: 'default',
+        /**
+         * Indicates whether the data is being loaded.
+         * @type {Boolean}
+         */
         loading: false,
+        /**
+         * Currently selected product for detailed view.
+         * @type {Object|null}
+         */
         selectedProduct: null,
       };
     },
     methods: {
+      /**
+       * Fetches the list of product categories from the API.
+       */
       async getCategories() {
         try {
           const response = await fetch('https://fakestoreapi.com/products/categories');
@@ -98,6 +129,9 @@
           console.error('Error fetching categories:', error);
         }
       },
+      /**
+       * Fetches and filters the list of products from the API based on the selected category.
+       */
       async getProduct() {
         this.loading = true;
         try {
@@ -112,9 +146,15 @@
           this.loading = false;
         }
       },
+      /**
+       * Filters the list of products based on the search query.
+       */
       filterProducts() {
         this.products = this.products.filter(product => product.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
       },
+      /**
+       * Sorts the list of products based on the selected sorting order.
+       */
       sortProducts() {
         if (this.sortOrder === 'price-asc') {
           this.products.sort((a, b) => a.price - b.price);
@@ -122,20 +162,40 @@
           this.products.sort((a, b) => b.price - a.price);
         }
       },
+      /**
+       * Handles the click event on a product to show its detailed view.
+       * @param {Object} product - The clicked product.
+       */
       handleProductClick(product) {
         this.selectedProduct = product;
       },
+      /**
+       * Adds the specified product to the cart.
+       * @param {Object} product - The product to add to the cart.
+       */
       addToCart(product) {
         alert(`Added ${product.title} to cart!`);
         this.$store.commit('addToCart', product);
       },
+      /**
+       * Adds the specified product to the wishlist.
+       * @param {Object} product - The product to add to the wishlist.
+       */
       addToWishlist(product) {
         alert(`Added ${product.title} to wishlist!`);
         this.$store.commit('addToWishlist', product);
       },
+      /**
+       * Removes the specified product from the cart.
+       * @param {Number} productId - The ID of the product to remove from the cart.
+       */
       removeFromCart(productId) {
         this.$store.commit('removeFromCart', productId);
       },
+      /**
+       * Removes the specified product from the wishlist.
+       * @param {Number} productId - The ID of the product to remove from the wishlist.
+       */
       removeFromWishlist(productId) {
         this.$store.commit('removeFromWishlist', productId);
       }
@@ -153,3 +213,4 @@
     overflow: hidden;
   }
   </style>
+  
